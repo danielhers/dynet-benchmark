@@ -32,7 +32,7 @@ jobs:
         - cd ../../dynet-cpp
         - make -j$(nproc) DYNET_PATH=$DYNET_PATH EIGEN_PATH=$EIGEN_PATH
     - stage: test
-    - language: cpp
+      language: cpp
       python:
       env:
       install:
