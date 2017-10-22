@@ -94,7 +94,7 @@ jobs:
         - export TASK=treenn
 env:
   global:
-    - DYNET_PATH=$PWD/dynet EIGEN_PATH=$PWD/eigen DYFLAGS="--dynet-mem 2048" TIMEOUT=200 LONGTIMEOUT=300
+    - DYNET_PATH=$PWD/dynet EIGEN_PATH=$PWD/eigen DYFLAGS="--dynet-mem 2048" TIMEOUT=400 LONGTIMEOUT=600
   matrix:
     - TEST=dynet TASK=rnnlm-batch MBSIZE=64
     - TEST=dynet TASK=rnnlm-batch MBSIZE=16
