@@ -79,7 +79,43 @@ jobs:
             - libboost-regex1.55-dev
       install:
         - ln -s build/bilstm-tagger dynet-cpp
-        - export TASK=bilstm-tagger
+        - export TASK=bilstm-tagger SU=0
+    - language: cpp
+      python:
+      env:
+      addons:
+        apt:
+          sources:
+            - boost-latest
+          packages:
+            - libboost-regex1.55-dev
+      install:
+        - ln -s build/bilstm-tagger dynet-cpp
+        - export TASK=bilstm-tagger SU=1
+    - language: cpp
+      python:
+      env:
+      addons:
+        apt:
+          sources:
+            - boost-latest
+          packages:
+            - libboost-regex1.55-dev
+      install:
+        - ln -s build/bilstm-tagger-withchar dynet-cpp
+        - export TASK=bilstm-tagger-withchar SU=0
+    - language: cpp
+      python:
+      env:
+      addons:
+        apt:
+          sources:
+            - boost-latest
+          packages:
+            - libboost-regex1.55-dev
+      install:
+        - ln -s build/bilstm-tagger-withchar dynet-cpp
+        - export TASK=bilstm-tagger-withchar SU=1
     - language: cpp
       python:
       env:
@@ -91,7 +127,19 @@ jobs:
             - libboost-regex1.55-dev
       install:
         - ln -s build/treenn dynet-cpp
-        - export TASK=treenn
+        - export TASK=treenn SU=0
+    - language: cpp
+      python:
+      env:
+      addons:
+        apt:
+          sources:
+            - boost-latest
+          packages:
+            - libboost-regex1.55-dev
+      install:
+        - ln -s build/treenn dynet-cpp
+        - export TASK=treenn SU=1
 env:
   global:
     - DYNET_PATH=$PWD/dynet EIGEN_PATH=$PWD/eigen DYFLAGS="--dynet-mem 2048" TIMEOUT=400 LONGTIMEOUT=430
@@ -102,9 +150,12 @@ env:
     - TEST=dynet TASK=rnnlm-batch MBSIZE=01
     - TEST=dynet TASK=sparse-rnnlm-batch MBSIZE=16
     - TEST=dynet TASK=sparse-rnnlm-batch MBSIZE=01
-    - TEST=dynet TASK=bilstm-tagger
-    - TEST=dynet TASK=bilstm-tagger-withchar
-    - TEST=dynet TASK=treenn
+    - TEST=dynet TASK=bilstm-tagger SU=0
+    - TEST=dynet TASK=bilstm-tagger SU=1
+    - TEST=dynet TASK=bilstm-tagger-withchar SU=0
+    - TEST=dynet TASK=bilstm-tagger-withchar SU=1
+    - TEST=dynet TASK=treenn SU=0
+    - TEST=dynet TASK=treenn SU=1
     - TEST=chainer TASK=rnnlm-batch MBSIZE=64
     - TEST=chainer TASK=rnnlm-batch MBSIZE=16
     - TEST=chainer TASK=rnnlm-batch MBSIZE=04
